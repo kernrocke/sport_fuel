@@ -135,4 +135,14 @@ replace tennis = 1 if strpos(lower(Whatsportsteamareyouinvolve), "tennis") > 0
 label var tennis "Tennis"
 label value tennis yesno
 
+
+gen ht_n1 = ""
+replace ht_n1 = regexs(1) if regexm(WhatisyourheightPleaseente, "([0-9]+)")
+destring ht_n1, replace 
+
+
+gen ht_n2 = ""
+replace ht_n2 = ustrregexs(2) if ustrregexm(WhatisyourheightPleaseente, ".*?([0-9]+).*?([0-9]+)")
+destring ht_n2, replace 
+
 drop Timestamp Pleaseindicateifyouagreeto Whatyearstudentareyou RaceEthnicitySelectallthat IfyouchoseOtherasshownab Whatdoyoudefineyourselfas Areyouacommuter Whereisyourpermanentresidenc Whatsportsteamareyouinvolve
